@@ -13,19 +13,11 @@ void loop() {
   if (Serial.available() > 0) {
     odebranedane = Serial.readStringUntil('\n');
     informacjaozmianie_do_serva = odebranedane.toInt();
-    
-  if (odebranedane == "0" or odebranedane == "reset"){
+
+  if (odebranedane == "0" or odebranedane == "20" or odebranedane == "40" or odebranedane == "60" or odebranedane == "80" or odebranedane == "100" or odebranedane == "120" or odebranedane == "140" or odebranedane == "160" or odebranedane == "180") {
     serwomechanizm.write(informacjaozmianie_do_serva);   
   }
-  if (odebranedane == "50"){
-    serwomechanizm.write(informacjaozmianie_do_serva);   
-  }
-  if (odebranedane == "100"){
-    serwomechanizm.write(informacjaozmianie_do_serva);   
-  }
-  if (odebranedane == "180"){
-    serwomechanizm.write(informacjaozmianie_do_serva);   
-  }
+ 
   pozycja += informacjaozmianie_do_serva;
   }      
    
