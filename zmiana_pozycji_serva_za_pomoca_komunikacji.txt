@@ -1,0 +1,32 @@
+#include <Servo.h>
+
+Servo serwomechanizm;
+  int pozycja = 0;
+  int informacjaozmianie_do_serva = 0;
+  String odebranedane = "";
+void setup() {
+  Serial.begin(9600);
+  serwomechanizm.attach(9);
+  serwomechanizm.write(0); 
+}
+void loop() {
+  if (Serial.available() > 0) {
+    odebranedane = Serial.readStringUntil('\n');
+    informacjaozmianie_do_serva = odebranedane.toInt();
+    
+  if (odebranedane == "0" or odebranedane == "reset"){
+    serwomechanizm.write(informacjaozmianie_do_serva);   
+  }
+  if (odebranedane == "50"){
+    serwomechanizm.write(informacjaozmianie_do_serva);   
+  }
+  if (odebranedane == "100"){
+    serwomechanizm.write(informacjaozmianie_do_serva);   
+  }
+  if (odebranedane == "180"){
+    serwomechanizm.write(informacjaozmianie_do_serva);   
+  }
+  pozycja += informacjaozmianie_do_serva;
+  }      
+   
+}
